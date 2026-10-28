@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Quicksand:wght@400;500;600&family=Great+Vibes&display=swap" rel="stylesheet">
+    <title>CANOY AGRIVIT - Grow Naturally, Harvest Beautifully</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Announcement Bar -->
+    <div class="announcement-bar">
+        ✿ Fresh agricultural supplies for beautiful harvests ✿
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav container">
+            <a href="index.html" class="nav__brand">
+                <span class="nav__logo">🌿</span>
+                <span>CANOY AGRIVIT</span>
+            </a>
+            <div class="nav__search">
+                <input type="text" class="nav__search-input" placeholder="Search products..." id="headerSearch">
+                <button class="nav__search-btn" onclick="document.getElementById('headerSearch').value = '';">🔍</button>
+            </div>
+            <button class="nav__toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">☰</button>
+            <ul class="nav__menu" id="navMenu">
+                <li><a href="index.html" class="nav__link active">Home</a></li>
+                <li><a href="shop.html" class="nav__link">Shop</a></li>
+                <li><a href="about.html" class="nav__link">About</a></li>
+                <li><a href="contact.html" class="nav__link">Contact</a></li>
+            </ul>
+            <a href="cart.html" class="nav__cart">
+                <span>🛒</span>
+                <span>Cart</span>
+                <span class="nav__cart-count">0</span>
+            </a>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" style="position:relative;">
+        <span class="animal-scatter" style="top:-20px; left:20px; font-size:90px; transform:rotate(-12deg);">🐔</span>
+        <span class="animal-scatter" style="bottom:10px; left:20px; font-size:100px; transform:rotate(10deg); animation-delay:1s;">🐄</span>
+        <div class="container hero__container">
+            <div class="hero__content">
+                <h1 class="hero__title">Grow Naturally, Harvest Beautifully</h1>
+                <p class="hero__subtitle" style="font-family:var(--font-script); font-size:1.5rem;">Grow Naturally, Harvest Beautifully</p>
+                <div class="hero__actions">
+                    <a href="shop.html" class="btn btn--primary">Shop Now</a>
+                    <a href="about.html" class="btn btn--secondary">Discover Our Story</a>
+                </div>
+            </div>
+<div class="hero__image">
+                <img src="INT4.webp" alt="Agricultural supplies and gardening" onerror="this.src='https://images.unsplash.com/photo-1461354464878-ad92f492a5a0?w=600&h=500&fit=crop'">
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="section section--alt">
+        <div class="container">
+            <div class="section__header">
+                <h2 class="section__title" style="position:relative;">Shop by Category <span class="animal-scatter" style="right:-90px; top:-10px; font-size:80px; transform:rotate(8deg);">🐷</span></h2>
+                <p class="section__subtitle">Explore our curated collections</p>
+            </div>
+            <div class="categories">
+                <a href="shop.html?category=Seeds" class="category__card">
+                    <span class="category__icon">🌱</span>
+                    <div class="category__name">Seeds</div>
+                </a>
+                <a href="shop.html?category=Fertilizers" class="category__card">
+                    <span class="category__icon">🌿</span>
+                    <div class="category__name">Fertilizers</div>
+                </a>
+                <a href="shop.html?category=Crop Protection" class="category__card">
+                    <span class="category__icon">🛡️</span>
+                    <div class="category__name">Crop Protection</div>
+                </a>
+                <a href="shop.html?category=Gardening Tools" class="category__card">
+                    <span class="category__icon">🔧</span>
+                    <div class="category__name">Gardening Tools</div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Products -->
+    <section class="section">
+        <div class="container">
+            <div class="section__header">
+                <h2 class="section__title">Featured Products</h2>
+                <p class="section__subtitle">Our most loved selections</p>
+            </div>
+            <div class="products__grid" id="featuredProducts"></div>
+            <div style="text-align: center; margin-top: 2rem;">
+                <a href="shop.html" class="btn btn--primary">View All Products</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__container">
+                <div>
+                    <div class="footer__brand">
+                        <span class="footer__logo">🌿</span>
+<span style="font-family:var(--font-script);">CANOY AGRIVIT</span>
+                    </div>
+                    <p class="footer__desc">Grow naturally, harvest beautifully. Quality agricultural supplies for your growing needs.</p>
+                </div>
+                <div>
+                    <h4 class="footer__title">Quick Links</h4>
+                    <ul class="footer__links">
+                        <li><a href="index.html" class="footer__link">Home</a></li>
+                        <li><a href="shop.html" class="footer__link">Shop</a></li>
+                        <li><a href="about.html" class="footer__link">About</a></li>
+                        <li><a href="contact.html" class="footer__link">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer__title">Shop</h4>
+                    <ul class="footer__links">
+                        <li><a href="shop.html?category=Seeds" class="footer__link">Seeds</a></li>
+                        <li><a href="shop.html?category=Fertilizers" class="footer__link">Fertilizers</a></li>
+                        <li><a href="shop.html?category=Crop Protection" class="footer__link">Crop Protection</a></li>
+                        <li><a href="shop.html?category=Gardening Tools" class="footer__link">Gardening Tools</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer__title">Contact</h4>
+                    <ul class="footer__links">
+                        <li class="footer__link">📞 [To be provided]</li>
+                        <li class="footer__link">✉️ [To be provided]</li>
+                        <li class="footer__link">📍 [To be provided]</li>
+                    </ul>
+                </div>
+            </div>
+<div class="footer__bottom">
+            <p style="margin-bottom: 0.5rem; font-size: 4rem;">🐔 🐄 🐷 🐐 🦆</p>
+            <p>&copy; <span id="year"></span> CANOY AGRIVIT. All rights reserved. | IT105 Web Development Project</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/products.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            const navToggle = document.getElementById('navToggle');
+            const navMenu = document.getElementById('navMenu');
+            
+            if (navToggle && navMenu) {
+                navToggle.addEventListener('click', function() {
+                    navMenu.classList.toggle('active');
+                    navToggle.setAttribute('aria-expanded', navMenu.classList.contains('active'));
+                });
+            }
+            
+            if (typeof updateCartCount === 'function') {
+                updateCartCount();
+            }
+            
+const featuredGrid = document.getElementById('featuredProducts');
+            if (!featuredGrid) { console.error('featuredProducts container not found'); return; }
+            if (typeof products === 'undefined' || !Array.isArray(products) || products.length === 0) { console.error('products data missing or empty'); return; }
+                const featured = products.filter(p => p.featured).slice(0, 4);
+                featuredGrid.innerHTML = '';
+                for (let i = 0; i < featured.length; i++) {
+                    const product = featured[i];
+                    const card = document.createElement('article');
+                    card.className = 'product__card';
+                    card.innerHTML = '<img src="' + product.image + '" alt="' + product.name + '" class="product__image" onerror="this.src=\\"https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=400&h=220&fit=crop\\"">' +
+                        '<div class="product__content">' +
+                        '<span class="product__category">' + product.category + '</span>' +
+                        '<h3 class="product__name">' + product.name + '</h3>' +
+                        '<p class="product__description">' + (product.description.length > 80 ? product.description.substring(0, 80) + '...' : product.description) + '</p>' +
+                        '<div class="product__price">₱' + product.price.toLocaleString('en-PH') + '</div>' +
+                        '<div class="product__actions">' +
+                        '<a href="shop.html" class="btn btn--secondary">View Details</a>' +
+                        '<button class="btn btn--primary" onclick="addToCart(' + product.id + ', 1)">Add to Cart</button>' +
+                        '</div>' +
+                        '</div>';
+                    featuredGrid.appendChild(card);
+                }
+        });
+    </script>
+</body>
+</html>
+
+

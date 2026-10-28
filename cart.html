@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Quicksand:wght@400;500;600&family=Great+Vibes&display=swap" rel="stylesheet">
+    <title>Cart - CANOY AGRIVIT</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="announcement-bar">✿ Fresh agricultural supplies for beautiful harvests ✿</div>
+    
+    <header class="header">
+        <nav class="nav container">
+            <a href="index.html" class="nav__brand">
+                <span class="nav__logo">🌿</span>
+                <span>CANOY AGRIVIT</span>
+            </a>
+            <button class="nav__toggle" id="navToggle" aria-label="Toggle menu">☰</button>
+            <ul class="nav__menu" id="navMenu">
+                <li><a href="index.html" class="nav__link">Home</a></li>
+                <li><a href="shop.html" class="nav__link">Shop</a></li>
+                <li><a href="about.html" class="nav__link">About</a></li>
+                <li><a href="contact.html" class="nav__link">Contact</a></li>
+            </ul>
+            <a href="cart.html" class="nav__cart">
+                <span>🛒</span>
+                <span>Cart</span>
+                <span class="nav__cart-count">0</span>
+            </a>
+        </nav>
+    </header>
+
+    <section class="section">
+        <div class="container">
+            <div class="section__header">
+                <h2 class="section__title">Shopping Cart</h2>
+            </div>
+            <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 2rem;">
+                <div id="cartItems"></div>
+                <div>
+                    <div style="background: var(--white); padding: 1.5rem; border-radius: var(--radius-lg); border: 1px solid var(--border);">
+                        <h3 style="margin-bottom: 1rem; font-family: 'Playfair Display', serif;">Order Summary</h3>
+                        <div style="display: flex; justify-content: space-between; padding: 0.5rem 0; border-bottom: 1px solid var(--border);">
+                            <span>Subtotal</span>
+                            <span id="cartSubtotal">₱0</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; padding: 0.75rem 0; font-weight: 600; font-size: 1.125rem; color: var(--cocoa-brown);">
+                            <span>Total</span>
+                            <span id="cartTotal">₱0</span>
+                        </div>
+                        <a href="checkout.html" class="btn btn--primary" style="width: 100%; margin-top: 1rem;">Proceed to Checkout</a>
+                        <button onclick="clearCart(); location.reload();" class="btn btn--secondary" style="width: 100%; margin-top: 0.75rem;">Clear Cart</button>
+                    </div>
+                </div>
+            </div>
+            <div id="cartEmpty" style="display: none; text-align: center; padding: 3rem; background: var(--white); border-radius: var(--radius-lg); border: 1px solid var(--border);">
+                <div style="font-size: 8rem; margin-bottom: 1rem;">🐔</div>
+                <h3 style="font-family: 'Playfair Display', serif; margin-bottom: 0.5rem;">Your cart is empty</h3>
+                <a href="shop.html" class="btn btn--primary" style="margin-top: 1rem;">Continue Shopping</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__bottom">
+                <p>&copy; <span id="year3"></span> CANOY AGRIVIT. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/products.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        document.getElementById('year3').textContent = new Date().getFullYear();
+        const navToggle = document.getElementById('navToggle');
+        const navMenu = document.getElementById('navMenu');
+        if (navToggle && navMenu) navToggle.addEventListener('click', function(){ navMenu.classList.toggle('active'); });
+        if (typeof updateCartCount === 'function') updateCartCount();
+        
+        function renderCartPage() {
+            const cartItemsDiv = document.getElementById('cartItems');
+            const cartEmpty = document.getElementById('cartEmpty');
+            const cartSubtotal = document.getElementById('cartSubtotal');
+            const cartTotal = document.getElementById('cartTotal');
+            const cartDetails = getCartWithDetails();
+            
+            if (cartDetails.length === 0) {
+                cartItemsDiv.innerHTML = '';
+                if (cartEmpty) cartEmpty.style.display = 'block';
+                if (cartSubtotal) cartSubtotal.textContent = '₱0';
+                if (cartTotal) cartTotal.textContent = '₱0';
+                return;
+            }
+            if (cartEmpty) cartEmpty.style.display = 'none';
+            
+            cartItemsDiv.innerHTML = '';
+            let total = 0;
+            cartDetails.forEach(item => {
+                const product = item.product;
+                const itemTotal = product.price * item.quantity;
+                total += itemTotal;
+                const itemDiv = document.createElement('div');
+                itemDiv.style.cssText = 'display: flex; gap: 1rem; background: var(--white); padding: 1rem; margin-bottom: 1rem; border-radius: var(--radius-lg); border: 1px solid var(--border); align-items: center;';
+                itemDiv.innerHTML = '<img src="' + product.image + '" alt="' + product.name + '" style="width: 80px; height: 80px; object-fit: cover; border-radius: var(--radius);" onerror="this.src=\'https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=80&h=80&fit=crop\'">' +
+                    '<div style="flex: 1;"><h4 style="font-family: Playfair Display, serif; margin-bottom: 0.25rem;">' + product.name + '</h4><div style="color: var(--cocoa-brown); font-weight: 600;">₱' + product.price.toLocaleString('en-PH') + '</div></div>' +
+                    '<div style="display: flex; align-items: center; gap: 0.5rem;"><button onclick="updateCartItemQuantity(' + product.id + ',' + (item.quantity-1) + '); location.reload();" style="padding: 0.25rem 0.5rem; border: 1px solid var(--border);">-</button><span style="padding: 0 0.75rem;">' + item.quantity + '</span><button onclick="updateCartItemQuantity(' + product.id + ',' + (item.quantity+1) + '); location.reload();" style="padding: 0.25rem 0.5rem; border: 1px solid var(--border);">+</button></div>' +
+                    '<div style="font-weight: 600; color: var(--cocoa-brown); min-width: 80px; text-align: right;">₱' + itemTotal.toLocaleString('en-PH') + '</div>' +
+                    '<button onclick="removeFromCart(' + product.id + '); location.reload();" style="color: #d32f2f; padding: 0.25rem;">Remove</button>';
+                cartItemsDiv.appendChild(itemDiv);
+            });
+            if (cartSubtotal) cartSubtotal.textContent = '₱' + total.toLocaleString('en-PH');
+            if (cartTotal) cartTotal.textContent = '₱' + total.toLocaleString('en-PH');
+        }
+        document.addEventListener('DOMContentLoaded', renderCartPage);
+    </script>
+</body>
+</html>
+
